@@ -2,13 +2,14 @@ $(document).ready(function() {
 
 // set up variables
 
-var computerNumber = 0;
+var computerNumber;
 var randomNumberSec = $("#randomNumber");
-var pinkNumber = 0;
-var orangeNumber = 0;
-var blueNumber = 0;
-var purpleNumber = 0;
+var pinkNumber;
+var orangeNumber;
+var blueNumber;
+var purpleNumber;
 var total = 0;
+var totalScoreSec = $("#totalScore");
 var win = 0;
 var lose = 0;
 
@@ -44,7 +45,6 @@ var pickPurple = function() {
     console.log("purple crystal " + purpleNumber);
 }
 
-
 chooseNumber();
 pickPink();
 pickOrange();
@@ -53,21 +53,40 @@ pickPurple();
 
 // when player clicks pink crystal increase the total score by random number assigned to pink crystal
 // display new total score in #totalScore paragraph
+$(document).on("click", "#pink", function() {
+    total += pinkNumber;
+    totalScoreSec.text(total);
+})
 
 // when player clicks orange crystal increase the total score by random number assigned to orange crystal
 // display new total score in #totalScore paragraph
+$(document).on("click", "#orange", function() {
+    total += orangeNumber;
+    totalScoreSec.text(total);
+})
 
 // when player clicks blue crystal increase the total score by random number assigned to blue crystal
 // display new total score in #totalScore paragraph
+$(document).on("click", "#blue", function() {
+    total += blueNumber;
+    totalScoreSec.text(total);
+})
 
 // when player clicks purple crystal increase the total score by random number assigned to purple crystal
 // display new total score in #totalScore paragraph
+$(document).on("click", "#purple", function() {
+    total += purpleNumber;
+    totalScoreSec.text(total);
+})
 
 // if total equals the random number chosen by the computer, increase win by 1
 // display "you are a winner" and new total of wins
+if (total === computerNumber) {
+
+}
 
 // if total exceeds the random number chosed by the computer, increase lose by 1
-// display "you are a loser" and new toatl of losses 
+// display "you are a loser" and new total of losses 
 
 // if a player wins or loses reset game
 // computer chooses a new random number 
