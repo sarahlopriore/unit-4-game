@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 // set up variables
 
-var computerNumber;
+var computerNumber = 0;
 var randomNumberSec = $("#randomNumber");
 var pinkNumber;
 var orangeNumber;
@@ -11,7 +11,10 @@ var purpleNumber;
 var total = 0;
 var totalScoreSec = $("#totalScore");
 var win = 0;
+var winDisplay = $("#wins");
 var lose = 0;
+var loseDisplay = $("#losses");
+var resultDisplay = $("#result");
 
 
 // computer chooses a random number between 19 and 120 
@@ -45,17 +48,14 @@ var pickPurple = function() {
     console.log("purple crystal " + purpleNumber);
 }
 
-chooseNumber();
-pickPink();
-pickOrange();
-pickBlue();
-pickPurple();
 
 // when player clicks pink crystal increase the total score by random number assigned to pink crystal
 // display new total score in #totalScore paragraph
 $(document).on("click", "#pink", function() {
     total += pinkNumber;
     totalScoreSec.text(total);
+    youWin();
+    youLose();
 })
 
 // when player clicks orange crystal increase the total score by random number assigned to orange crystal
@@ -63,6 +63,8 @@ $(document).on("click", "#pink", function() {
 $(document).on("click", "#orange", function() {
     total += orangeNumber;
     totalScoreSec.text(total);
+    youWin();
+    youLose();
 })
 
 // when player clicks blue crystal increase the total score by random number assigned to blue crystal
@@ -70,6 +72,8 @@ $(document).on("click", "#orange", function() {
 $(document).on("click", "#blue", function() {
     total += blueNumber;
     totalScoreSec.text(total);
+    youWin();
+    youLose();
 })
 
 // when player clicks purple crystal increase the total score by random number assigned to purple crystal
@@ -77,16 +81,39 @@ $(document).on("click", "#blue", function() {
 $(document).on("click", "#purple", function() {
     total += purpleNumber;
     totalScoreSec.text(total);
+    youWin();
+    youLose();
 })
 
 // if total equals the random number chosen by the computer, increase win by 1
 // display "you are a winner" and new total of wins
-if (total === computerNumber) {
-
+var youWin = function() {
+    if (total === computerNumber) {
+        win++;
+        winDisplay.append(win);
+        console.log("you win " + win);
+        chooseNumber();
+        pinkPink();
+        pickOrange();
+        pickBlue();
+        pickPurple();
+    }
 }
 
 // if total exceeds the random number chosed by the computer, increase lose by 1
 // display "you are a loser" and new total of losses 
+var youLose = function () {
+    if (total >= computerNumber) {
+        lose++;
+        loseDisplay.append(lose);
+        console.log("you lose " + lose);
+        choooseNumber();
+        pinkPink();
+        pickOrange();
+        pickBlue();
+        pickPurple();
+    }
+}
 
 // if a player wins or loses reset game
 // computer chooses a new random number 
@@ -95,5 +122,13 @@ if (total === computerNumber) {
 // computer chooses a new random number between 1  and 12 for orange crystal
 // computer chooses a new random number between 1  and 12 for blue crystal
 // computer chooses a new random number between 1  and 12 for purple crystal
+
+
+chooseNumber();
+pickPink();
+pickOrange();
+pickBlue();
+pickPurple();
+
 
 })
