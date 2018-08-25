@@ -27,25 +27,21 @@ var chooseNumber = function() {
 // computer chooses a random number between 1  and 12 for pink crystal
 var pickPink = function() {
     pinkNumber = Math.floor(Math.random() * 12) + 1;
-    console.log("pink crystal " + pinkNumber);
 }
 
 // computer chooses a random number between 1  and 12 for orange crystal
 var pickOrange = function() {
     orangeNumber = Math.floor(Math.random() * 11) + 1;
-    console.log("orange crystal " + orangeNumber);
 }
 
 // computer chooses a random number between 1  and 12 for blue crystal
 var pickBlue = function() {
     blueNumber = Math.floor(Math.random() * 11) + 1;
-    console.log("blue crystal " + blueNumber);
 }
 
 // computer chooses a random number between 1  and 12 for purple crystal
 var pickPurple = function() {
     purpleNumber = Math.floor(Math.random() * 11) + 1;
-    console.log("purple crystal " + purpleNumber);
 }
 
 
@@ -90,13 +86,15 @@ $(document).on("click", "#purple", function() {
 var youWin = function() {
     if (total === computerNumber) {
         win++;
-        winDisplay.append(win);
-        console.log("you win " + win);
+        winDisplay.text("Wins: " + win);
+        resultDisplay.text("You are a winner!");
         chooseNumber();
-        pinkPink();
+        pickPink();
         pickOrange();
         pickBlue();
         pickPurple();
+        totalScoreSec.empty();
+        total = 0;
     }
 }
 
@@ -105,24 +103,19 @@ var youWin = function() {
 var youLose = function () {
     if (total >= computerNumber) {
         lose++;
-        loseDisplay.append(lose);
-        console.log("you lose " + lose);
-        choooseNumber();
-        pinkPink();
+        loseDisplay.text("Losses: " + lose);
+        resultDisplay.text("You are a loser!");
+        chooseNumber();
+        pickPink();
         pickOrange();
         pickBlue();
         pickPurple();
+        totalScoreSec.empty();
+        total = 0;
     }
 }
 
 // if a player wins or loses reset game
-// computer chooses a new random number 
-// random number is displayed in #randomNumber section
-// computer chooses a new random number between 1  and 12 for pink crystal
-// computer chooses a new random number between 1  and 12 for orange crystal
-// computer chooses a new random number between 1  and 12 for blue crystal
-// computer chooses a new random number between 1  and 12 for purple crystal
-
 
 chooseNumber();
 pickPink();
