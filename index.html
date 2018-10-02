@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Crystal Collector Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Eczar|Gentium+Basic" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
     
 </head>
@@ -14,7 +15,7 @@
         <h1>Crystal Collector</h1>
     </div>
 
-    <div>
+    <div class="container">
         <p>You will be given a number at the start of the game.</p>
         <p>There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.</p>
         <p>You win the game by matching your total score to random number , you lose the game is your total score goes above the random number.</p>
@@ -23,8 +24,8 @@
     </div>
 
     <div>
-        <section id="randomNumber"></section>
-        <section>
+        <section id="randomNumber" class="number"></section>
+        <section class="number">
             <p id="result"></p>
             <p id="wins">Wins: </p>
             
@@ -39,7 +40,7 @@
         <img id="purple" src="assets/images/purple-crystal.jpg" alt="purple crystal">
     </div>
 
-    <div>
+    <div class="number">
         <p>Your total score is:</p>
         <p id="totalScore"></p>
     </div>
